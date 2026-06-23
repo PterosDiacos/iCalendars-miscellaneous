@@ -1,1 +1,2 @@
-[01.2026-12.2030](https://raw.githubusercontent.com/PterosDiacos/xiao-liu-ren/refs/heads/main/liuren-01-2026-12-2030.ics)
+小六壬 2026-2030
+Orthodox Major Feasts 2026-2030
