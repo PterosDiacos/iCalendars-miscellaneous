@@ -12,11 +12,10 @@ Conversion method
   date the First Republic was proclaimed).
 - Years I-XIV (1792-1805/06): leap ("sextile") years were determined by the
   autumn equinox and fell, historically, on Years III, VII and XI.
-- Years XV onward (the calendar was abolished in 1805, but several proposals
-  existed for a fixed continuation): this script uses Romme's proposed rule,
-  i.e. the same structure as the Gregorian leap rule (divisible by 4, except
-  centuries not divisible by 400), as is conventional for genealogical /
-  hobbyist date converters.
+- Years XV onward (the calendar was abolished in 1805 with several proposals
+  for a fixed continuation): this script uses Romme's rule, i.e. the same 
+  structure as the Gregorian leap rule (divisible by 4, except centuries not 
+  divisible by 400), as is conventional for genealogical date converters.
 - Each Republican year has 12 months of exactly 30 days, followed by 5
   "sans-culottide" complementary days (6 in a leap year). Months and
   complementary days are not interchangeable: a month index of 13 is used
@@ -207,14 +206,17 @@ def gregorian_to_republican(greg_date: date) -> RepublicanDate:
 
 
 def format_republican_date(rep_date: RepublicanDate) -> str:
-    """Render a RepublicanDate as e.g. '12 Nivose 232; Clay' or, for a
-    complementary day, 'La Fete de la Revolution 236'."""
+    """Render a RepublicanDate as e.g. '12 Nivose, Clay' or, for a
+    complementary day, 'La Fete de la Revolution'.
+    The number of year is appended on 1 Vendemiaire.
+    """
     if rep_date.month <= 12:
+        _year = f' {rep_date.year}' if rep_date.month == 1 and rep_date.day == 1 else ''
         month_name = MONTH_NAMES_FR[rep_date.month - 1]
         if rep_date.day == 1:
             month_name += f" ({MONTH_NAMES_EN[rep_date.month - 1]})"
-        return f"{rep_date.day} {month_name} {rep_date.year}; {rep_date.rural_name}"
-    return f"{rep_date.rural_name} {rep_date.year}"
+        return f"{rep_date.day} {month_name}{_year}, {rep_date.rural_name}"
+    return f"{rep_date.rural_name}"
 
 
 def iter_dates(start: date, end: date):
