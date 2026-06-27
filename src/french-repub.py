@@ -127,8 +127,8 @@ RURAL_DAY_NAMES = [
     'Lemon', 'Teasel', 'Buckthorn', 'Mexican marigold', 'Harvesting basket',
     'Wild rose', 'Hazelnut', 'Hops', 'Sorghum', 'Crayfish',
     'Bitter orange', 'Goldenrod', 'Maize', 'Sweet chestnut', 'Pack basket',
-    'La Fête de la Vertu (virtue)', 'La Fête du Génie (talent)', 'La Fête du Travail (labour)', 
-    "La Fête de l'Opinion (convictions)", 'La Fête des Récompenses (honors)',
+    'La Fête de la Vertu:Virtue', 'La Fête du Génie:Talent', 'La Fête du Travail:Labour',
+    "La Fête de l'Opinion:Convictions", 'La Fête des Récompenses:Honors',
     'La Fête de la Révolution'
 ]
 
@@ -215,7 +215,7 @@ def format_republican_date(rep_date: RepublicanDate) -> str:
         _year = f' {rep_date.year}' if rep_date.month == 1 and rep_date.day == 1 else ''
         month_name = MONTH_NAMES_FR[rep_date.month - 1]
         if rep_date.day == 1:
-            month_name += f" ({MONTH_NAMES_EN[rep_date.month - 1]})"
+            month_name += f":{MONTH_NAMES_EN[rep_date.month - 1]}"
         return f"{rep_date.day} {month_name}{_year}, {rep_date.rural_name}"
     return f"{rep_date.rural_name}"
 
